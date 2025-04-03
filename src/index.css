@@ -1,0 +1,53 @@
+/* Font EB Garamond */
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
+
+/* Font Montserrat */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  /* Define the primary color */
+  --color-primary: #244034;
+  --color-primary-50: #e6f0ea;
+  --color-primary-100: #b3d1c1;
+  --color-primary-200: #80b298;
+  --color-primary-300: #4d936f;
+  --color-primary-400: #244034; /* Base color */
+  --color-primary-500: #1a2e25;
+  --color-primary-600: #111c16;
+  --color-primary-700: #080e0b;
+  --color-primary-800: #000000;
+  --color-primary-900: #000000;
+
+  /* Define the secondary color */
+  --color-secondary: #d2f34c; /* Base color */
+  --color-secondary-50: #f7fee7;
+  --color-secondary-100: #ecfccb;
+  --color-secondary-200: #e2f89d;
+  --color-secondary-300: #d9f56f;
+  --color-secondary-400: #d2f34c; /* Base color */
+  --color-secondary-500: #c4e22a;
+  --color-secondary-600: #a8c01d;
+  --color-secondary-700: #8b9e16;
+  --color-secondary-800: #6e7c11;
+  --color-secondary-900: #515a0c;
+}
+
+@layer base {
+  /* Apply fonts to headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "EB Garamond", serif;
+  }
+
+  /* Apply font to body text */
+  body {
+    font-family: "Montserrat", sans-serif;
+  }
+}
