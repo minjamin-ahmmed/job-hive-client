@@ -2,10 +2,24 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/navbar-logo.png";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
+
+  const { user, signOutUser } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    signOutUser()
+      .then(() => {
+        console.log("User logged out successfully");
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+      });
+  };
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -49,7 +63,9 @@ const Navbar = () => {
     { name: "Contact", path: "/contact", dropdown: null },
     { name: "Dashboard", path: "/dashboard", dropdown: null },
     { name: "Post Job", path: "/post-job", dropdown: null },
-    { name: "Login", path: "/login", dropdown: null },
+    !user
+      ? { name: "Register", path: "/register", dropdown: null }
+      : { name: "Logout", path: "/", dropdown: null, isLogout: true },
   ];
 
   // Split navItems into middle and end groups
@@ -111,16 +127,29 @@ const Navbar = () => {
                 onMouseEnter={() => handleMouseEnter(item.name)}
                 onMouseLeave={handleMouseLeave}
               >
-                <Link
-                  to={item.path}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition ${
-                    item.name === "Post Job"
-                      ? "bg-secondary text-primary hover:bg-secondary-300"
-                      : "border border-white hover:bg-white hover:text-primary"
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                {item.isLogout ? (
+                  <span
+                    onClick={handleLogout}
+                    className={`cursor-pointer px-4 py-2 rounded-md text-sm font-medium transition ${
+                      item.name === "Post Job"
+                        ? "bg-secondary text-primary hover:bg-secondary-300"
+                        : "border border-white hover:bg-white hover:text-primary"
+                    }`}
+                  >
+                    {item.name}
+                  </span>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition ${
+                      item.name === "Post Job"
+                        ? "bg-secondary text-primary hover:bg-secondary-300"
+                        : "border border-white hover:bg-white hover:text-primary"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )}
                 {item.dropdown && dropdownOpen === item.name && (
                   <div className="absolute left-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-10">
                     {item.dropdown.map((subItem) => (
@@ -196,13 +225,22 @@ const Navbar = () => {
           {/* End Items */}
           {endItems.map((item) => (
             <div key={item.name} className="w-full text-center">
-              <Link
-                to={item.path}
-                onClick={toggleDrawer}
-                className="block px-3 py-2 text-lg font-medium hover:bg-secondary hover:text-primary"
-              >
-                {item.name}
-              </Link>
+              {item.isLogout ? (
+                <span
+                  onClick={handleLogout}
+                  className="block px-3 py-2 text-lg font-medium hover:bg-secondary hover:text-primary cursor-pointer"
+                >
+                  {item.name}
+                </span>
+              ) : (
+                <Link
+                  to={item.path}
+                  onClick={toggleDrawer}
+                  className="block px-3 py-2 text-lg font-medium hover:bg-secondary hover:text-primary"
+                >
+                  {item.name}
+                </Link>
+              )}
               {item.dropdown && (
                 <div className="mt-2 space-y-2">
                   {item.dropdown.map((subItem) => (
