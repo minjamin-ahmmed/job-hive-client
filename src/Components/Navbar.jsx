@@ -36,8 +36,8 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", path: "/", dropdown: null },
     {
-      name: "Job",
-      path: "/job",
+      name: "Jobs",
+      path: "/jobs",
       dropdown: [
         { name: "Search Jobs", path: "/job/search" },
         { name: "Job Categories", path: "/job/categories" },
@@ -45,12 +45,8 @@ const Navbar = () => {
       ],
     },
     {
-      name: "Explore",
-      path: "/explore",
-      dropdown: [
-        { name: "Companies", path: "/explore/companies" },
-        { name: "Industries", path: "/explore/industries" },
-      ],
+      name: "Create Job Listing",
+      path: "/create-job-listing",
     },
     {
       name: "Blog",

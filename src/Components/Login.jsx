@@ -3,6 +3,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import AuthContext from "../context/AuthContext";
 import { toast } from "react-toastify";
 import SocialLogin from "./SocialLogin";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +11,10 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const { signInUser } = useContext(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +26,8 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("User logged in:", user);
-        toast.success("Registration successful!", {
+        navigate(from, { replace: true });
+        toast.success("Successfully Loggedin!", {
           position: "top-center", // Position at the top-center of the screen
           theme: "colored",
           style: { backgroundColor: "#d2f34c", color: "#244034" }, // Custom color (green background with white text)
