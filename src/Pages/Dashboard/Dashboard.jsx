@@ -30,7 +30,7 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="py-24 px-6 max-w-4xl mx-auto space-y-4">
+      <div className="py-24 px-6 w-11/12 lg:w-1/2 mx-auto space-y-4">
         <h2 className="text-4xl lg:text-5xl text-center font-semibold text-[#244034]">
           My Applications
         </h2>

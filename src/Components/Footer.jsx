@@ -12,7 +12,7 @@ const Footer = () => {
           <p>
             Job Hive Inc.
             <br />
-            Connecting talent with opportunities since 2023
+            Connecting talent with opportunities since 2025
           </p>
         </aside>
         <nav>
@@ -41,7 +41,10 @@ const Footer = () => {
         </nav>
         <nav>
           <h6 className="footer-title text-secondary">Employers</h6>
-          <a href="/post-job" className="link link-hover hover:text-secondary">
+          <a
+            href="/create-job-listing"
+            className="link link-hover hover:text-secondary"
+          >
             Post a Job
           </a>
           <a

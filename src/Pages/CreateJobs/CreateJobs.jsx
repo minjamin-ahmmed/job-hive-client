@@ -8,6 +8,7 @@ const CreateJobs = () => {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -46,6 +47,7 @@ const CreateJobs = () => {
     try {
       await axios.post("http://localhost:5000/jobs", data);
       toast.success("Job posted successfully!");
+      reset();
     } catch (error) {
       alert("Error posting job.");
       toast.error("Error posting job.", error);

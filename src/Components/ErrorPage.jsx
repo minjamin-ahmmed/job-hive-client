@@ -6,8 +6,8 @@ import illustrator from "../../public/illustrator.json"; // Lottie animation JSO
 const ErrorPage = () => {
   const defaultOptions = {
     loop: true,
-    autoplay: true, // Animation will play automatically
-    animationData: illustrator, // The Lottie JSON file
+    autoplay: true,
+    animationData: illustrator,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },

@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import bannerImg from "../../../assets/banner-image.png";
 import framerIcon from "../../../assets/framer1.svg";
+import { TextEffect } from "../../../../components/motion-primitives/text-effect";
 
 const Banner = () => {
   return (
@@ -10,7 +12,7 @@ const Banner = () => {
             <h1 className="text-3xl lg:text-8xl font-semibold text-white mb-6">
               Find & Hire <br />
               <span className="text-secondary">
-                Top 3% of expert <br /> on Job Hive.
+                Top 3% of expert <TextEffect>on Job Hive.</TextEffect>
               </span>
             </h1>
             <p className="text-white font-medium text-xl mb-6">
@@ -18,9 +20,12 @@ const Banner = () => {
             </p>
 
             <div>
-              <button className="btn text-primary bg-secondary rounded-full px-16 py-4 border-none">
-                Learn More
-              </button>
+              <Link
+                to="/jobs"
+                className="inline-block bg-secondary text-primary px-12 py-3 rounded-full font-semibold hover:bg-secondary/90 transition"
+              >
+                Search Jobs
+              </Link>
             </div>
           </div>
 
