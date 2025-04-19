@@ -26,7 +26,7 @@ const Hotjobs = () => {
 
   if (loading)
     return (
-      <div className="bg-lime-100 py-16 px-4 lg:px-0">
+      <div className="py-16 px-4 lg:px-0">
         <div className="w-11/12 lg:w-9/12 mx-auto">
           <h2 className="text-4xl lg:text-6xl font-semibold text-primary text-center mb-2">
             <SkeletonLoader type="text" count={1} />
@@ -50,7 +50,7 @@ const Hotjobs = () => {
   }
 
   return (
-    <div className="bg-lime-100 py-16 px-4 lg:px-0">
+    <div className="py-16 px-4 lg:px-0">
       <div className="w-11/12 lg:w-9/12 mx-auto">
         <h2 className="text-4xl lg:text-6xl font-semibold text-primary text-center mb-2">
           Hot Jobs
@@ -63,7 +63,7 @@ const Hotjobs = () => {
           {hotJobs.slice(0, 6).map((job) => (
             <div
               key={job._id}
-              className="bg-white shadow rounded-2xl p-6 flex flex-col justify-between transition-transform hover:-translate-y-2 hover:shadow-md duration-300 group"
+              className="bg-white border border-secondary shadow rounded-2xl p-6 flex flex-col justify-between transition-transform hover:-translate-y-2 hover:shadow-md duration-300 group"
             >
               {/* Top Section */}
               <div className="flex items-center gap-4 mb-4">

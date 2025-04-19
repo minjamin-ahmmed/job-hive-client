@@ -4,6 +4,7 @@ import AuthContext from "../context/AuthContext";
 import { toast } from "react-toastify";
 import SocialLogin from "./SocialLogin";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -23,15 +24,21 @@ const Login = () => {
     setPassword("");
 
     signInUser(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log("User logged in:", user);
+      .then((result) => {
+        console.log("User logged in:", result.user.email);
+        const user = { email: email };
         navigate(from, { replace: true });
         toast.success("Successfully Loggedin!", {
           position: "top-center", // Position at the top-center of the screen
           theme: "colored",
           style: { backgroundColor: "#d2f34c", color: "#244034" }, // Custom color (green background with white text)
         });
+
+        axios
+          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+          });
       })
       .catch((error) => {
         const errorCode = error.code;

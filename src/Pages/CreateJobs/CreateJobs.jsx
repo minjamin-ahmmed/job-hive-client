@@ -2,8 +2,11 @@ import React from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const CreateJobs = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -43,11 +46,14 @@ const CreateJobs = () => {
     name: "responsibilities",
   });
 
+  // const apiUrl = import.meta.env.VITE_API_URL;
+
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:5000/jobs", data);
+      await axios.post(`http://localhost:5000/jobs`, data);
       toast.success("Job posted successfully!");
       reset();
+      navigate("/my-posted-jobs");
     } catch (error) {
       alert("Error posting job.");
       toast.error("Error posting job.", error);

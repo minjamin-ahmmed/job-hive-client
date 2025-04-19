@@ -49,6 +49,10 @@ const Navbar = () => {
       path: "/create-job-listing",
     },
     {
+      name: "Jobs I’ve Posted",
+      path: "/my-posted-jobs",
+    },
+    {
       name: "Blog",
       path: "/blog",
       dropdown: [
@@ -65,12 +69,12 @@ const Navbar = () => {
   ];
 
   // Split navItems into middle and end groups
-  const middleItems = navItems.slice(0, 6); // Home, Job, Explore, Blog, Contact, Dashboard
+  const middleItems = navItems.slice(0, 7); // Home, Job, Explore, Blog, Contact, Dashboard
   const endItems = navItems.slice(-2); // Post Job, Login
 
   return (
     <nav className="bg-primary text-white fixed top-0 left-0 w-full z-50">
-      <div className="w-11/12 mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-11/12  mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">

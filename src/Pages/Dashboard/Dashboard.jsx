@@ -12,8 +12,9 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios(
-          `http://localhost:5000/job-applications?email=${user.email}`
+        const response = await axios.get(
+          `http://localhost:5000/job-applications?email=${user.email}`,
+          { withCredentials: true }
         );
         setData(response.data);
         setLoading(false);
