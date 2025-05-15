@@ -12,7 +12,9 @@ const Hotjobs = () => {
   useEffect(() => {
     const fetchHotJobs = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/jobs");
+        const response = await axios.get("http://localhost:5000/jobs", {
+          withCredentials: true,
+        });
         setHotJobs(response.data);
       } catch (error) {
         setError(error);

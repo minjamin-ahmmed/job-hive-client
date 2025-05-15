@@ -30,7 +30,7 @@ const Banner = () => {
           </div>
 
           <div>
-            <div className="lg:absolute lg:top-0 lg:z-50">
+            <div className="lg:absolute lg:top-0 ">
               <img src={framerIcon} alt="" />
             </div>
             <div className="h-[600px]">

@@ -10,7 +10,8 @@ const MypostedJobs = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/jobs?email=${user.email}`
+          `http://localhost:5000/jobs?email=${user.email}`,
+          { withCredentials: true }
         );
         setData(response.data);
       } catch {

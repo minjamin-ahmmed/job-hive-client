@@ -26,16 +26,17 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         console.log("User logged in:", result.user.email);
-        const user = { email: email };
+        const user = { email: result.user.email };
         navigate(from, { replace: true });
         toast.success("Successfully Loggedin!", {
           position: "top-center", // Position at the top-center of the screen
           theme: "colored",
           style: { backgroundColor: "#d2f34c", color: "#244034" }, // Custom color (green background with white text)
         });
-
         axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .post("http://localhost:5000/jwt", user, {
+            withCredentials: true,
+          })
           .then((res) => {
             console.log(res.data);
           });
